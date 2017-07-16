@@ -26,8 +26,8 @@ class DashboardViewController: UIViewController {
     }
     
     func setupNavigationBar() {
-        self.navigationItem.rightBarButtonItem = ToDoListHelper.barItemWithImage(image: UIImage(named: "add_icon")!, highlightedImage: UIImage(named: "add_icon")!, forFrame: CGRect.init(x: 0, y: 0, width: 25, height: 30), withPadding: 5, isLeftBarButton: false, target: self, action: #selector(didTapOnAddButton))
-        self.navigationItem.leftBarButtonItem = ToDoListHelper.barItemWithImage(image: UIImage(named: "sort_icon")!, highlightedImage: UIImage(named: "sort_icon")!, forFrame: CGRect.init(x: 0, y: 0, width: 30, height: 30), withPadding: 5, isLeftBarButton: true, target: self, action: #selector(didTapOnSortButton))
+        self.navigationItem.rightBarButtonItem = ToDoListHelper.barItemWithImage(image: UIImage(named: "add_icon")!, highlightedImage: UIImage(named: "add_icon")!, forFrame: CGRect.init(x: 0, y: 0, width: 25, height: 25), withPadding: 5, isLeftBarButton: false, target: self, action: #selector(didTapOnAddButton))
+        self.navigationItem.leftBarButtonItem = ToDoListHelper.barItemWithImage(image: UIImage(named: "sort_icon")!, highlightedImage: UIImage(named: "sort_icon")!, forFrame: CGRect.init(x: 0, y: 0, width: 25, height: 25), withPadding: 5, isLeftBarButton: true, target: self, action: #selector(didTapOnSortButton))
     }
 
     func didTapOnAddButton() {
@@ -187,5 +187,10 @@ extension DashboardViewController:UISearchBarDelegate {
             self.searchBar.text = ""
             self.animateNavigationBar()
         }
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        return true
     }
 }
